@@ -7,7 +7,7 @@ def main():
 
     window = Window()
     spectrogram = Spectrogram(window, "assets/Bach_prelude_C_major.wav")
-    window.mainloop()
+    window.run()
 
 
 if __name__ == "__main__":

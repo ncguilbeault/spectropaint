@@ -20,5 +20,8 @@ class Spectrogram:
         )
 
         self.window.update_spectrogram(
-            self.spectrogram[0], self.time_segments, self.frequencies
+            self.spectrogram[0],
+            self.time_segments,
+            self.frequencies,
         )
+        self.window.set_audio_data(self.sample_rate, self.audio_data)
