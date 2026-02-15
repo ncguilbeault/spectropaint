@@ -8,6 +8,7 @@ OpenGL-based spectrogram painter with interactive brush controls.
 - H: toggle spectrogram visibility
 - O: toggle spectrogram playback line
 - P: toggle painted playback line
+- R: start/stop microphone recording (updates spectrogram)
 - + / -: brush intensity
 - [ / ]: brush radius
 - C: clear paint

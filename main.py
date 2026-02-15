@@ -1,13 +1,8 @@
-import spectropaint as sp
-from spectropaint.window import Window
-from spectropaint.spectrogram import Spectrogram
+from spectropaint import default_audio_path, main as app_main
 
 
 def main():
-
-    window = Window()
-    spectrogram = Spectrogram(window, "assets/Bach_prelude_C_major.wav")
-    window.run()
+    app_main(default_audio_path())
 
 
 if __name__ == "__main__":
