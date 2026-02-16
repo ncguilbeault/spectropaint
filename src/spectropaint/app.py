@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 from .controller import SpectropaintController
 from .painter import SpectropaintPainter
@@ -21,6 +22,10 @@ def main(audio_file: str | None = None) -> None:
     view.run()
 
 
-def default_audio_path() -> str:
+def default_audio_path() -> str | None:
     repo_root = Path(__file__).resolve().parents[2]
-    return str(repo_root / "assets" / "Bach_prelude_C_major.wav")
+    default_file = str(repo_root / "assets" / "Bach_prelude_C_major.wav")
+    if os.path.exists(default_file):
+        return default_file
+    else:
+        None

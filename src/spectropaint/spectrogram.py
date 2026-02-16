@@ -2,11 +2,23 @@ import numpy as np
 import scipy.signal as signal
 from scipy.io import wavfile
 
+DEFAULT_SAMPLE_RATE = 44100
+
 
 class SpectropaintSpectrogram:
     def load(
         self, wav_file: str
     ) -> tuple[int, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+
+        if wav_file is None:
+            return (
+                DEFAULT_SAMPLE_RATE,
+                np.array([], dtype=np.float32),
+                np.array([[]], dtype=np.float32),
+                np.array([], dtype=np.float32),
+                np.array([], dtype=np.float32),
+            )
+
         sample_rate, audio_data = wavfile.read(wav_file)
 
         working = np.array(audio_data)
@@ -33,7 +45,6 @@ class SpectropaintSpectrogram:
         working = np.array(audio_data)
 
         if working.ndim == 2:
-            # Accept both (samples, channels) and (channels, samples).
             if working.shape[0] <= 8 and working.shape[1] > working.shape[0]:
                 mono = working.mean(axis=0)
             else:

@@ -115,6 +115,7 @@ class SpectropaintAudio:
         on_error,
     ) -> None:
         try:
+            print(f"Audio: {audio} type: {audio.dtype}")
             audio = np.array(audio, dtype=np.float32)
             audio = np.clip(audio, -1.0, 1.0)
             if audio.ndim == 1:

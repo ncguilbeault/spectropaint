@@ -509,7 +509,9 @@ class SpectropaintView(pyglet.window.Window):
 
         for idx in time_ticks:
             t = float(self.spectrogram_time[idx])
-            x = (idx / max(len(self.spectrogram_time) - 1, 1)) * self.width
+            x = (idx / max(len(self.spectrogram_time) - 1, 1)) * (self.width * 0.94) + (
+                self.width * 0.03
+            )
             self._axis_labels.append(
                 pyglet.text.Label(
                     f"{t:.2f}s",
@@ -526,7 +528,9 @@ class SpectropaintView(pyglet.window.Window):
             f = float(self.spectrogram_frequencies[idx])
             y = (
                 self.panel_height
-                + (idx / max(len(self.spectrogram_frequencies) - 1, 1)) * plot_height
+                + (idx / max(len(self.spectrogram_frequencies) - 1, 1))
+                * (plot_height * 0.98)
+                + (plot_height * 0.01)
             )
             self._axis_labels.append(
                 pyglet.text.Label(
