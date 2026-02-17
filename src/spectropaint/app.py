@@ -24,8 +24,10 @@ def main(audio_file: str | None = None) -> None:
 
 def default_audio_path() -> str | None:
     repo_root = Path(__file__).resolve().parents[2]
-    default_file = str(repo_root / "assets" / "Bach_prelude_C_major.wav")
-    if os.path.exists(default_file):
-        return default_file
-    else:
-        None
+    default_folder = str(repo_root / "assets")
+    if not os.path.exists(default_folder):
+        return None
+    for file in os.listdir(default_folder):
+        if file.lower().endswith(".wav"):
+            return str(Path(default_folder) / file)
+    return None
